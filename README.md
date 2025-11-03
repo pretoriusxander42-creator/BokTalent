@@ -41,3 +41,4 @@ npm run test:e2e
 ```
 
 Replace placeholders in `.env.example` with real values before connecting external services.
+# BokTalent
