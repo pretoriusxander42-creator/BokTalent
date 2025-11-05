@@ -7,9 +7,9 @@ import { AuthProvider } from '../lib/auth/AuthProvider'
 export default function Shell({ children }: { children: React.ReactNode }){
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         <Header />
-        <main className="max-w-4xl mx-auto p-4">{children}</main>
+        <main>{children}</main>
       </div>
     </AuthProvider>
   )
