@@ -26,8 +26,12 @@ export function validateEnv(raw: Record<string, unknown> = process.env) {
 
 // By default we validate on load and throw on failure to fail fast in non-test environments.
 // During tests (NODE_ENV === 'test') we avoid throwing so unit tests can import the module.
+// Only validate server env on the server side (not in browser)
+const isServer = typeof window === 'undefined'
 const result = validateEnv(process.env)
-if (process.env.NODE_ENV !== 'test') {
+
+if (process.env.NODE_ENV !== 'test' && isServer) {
+  // Server-side validation - validate both server and public env
   if (!result.server.success) {
     throw new Error('Invalid server environment variables: ' + JSON.stringify(result.server.error.format(), null, 2))
   }
@@ -36,6 +40,7 @@ if (process.env.NODE_ENV !== 'test') {
   }
 }
 
+// Export validated env or undefined (client will get values from Next.js's env injection)
 export const serverEnv = result.server.success ? result.server.data : undefined
 export const publicEnv = result.public.success ? result.public.data : undefined
 

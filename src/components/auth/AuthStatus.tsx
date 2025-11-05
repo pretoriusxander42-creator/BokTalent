@@ -1,3 +1,5 @@
+'use client'
+
 import { useAuth } from '@/lib/auth/hooks'
 import { useSignOut } from '@/lib/auth/hooks'
 

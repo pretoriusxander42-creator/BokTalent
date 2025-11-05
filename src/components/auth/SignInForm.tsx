@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useSignIn } from '@/lib/auth/hooks'

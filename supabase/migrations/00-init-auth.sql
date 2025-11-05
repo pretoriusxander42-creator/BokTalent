@@ -3,8 +3,7 @@ create table public.profiles (
   id uuid references auth.users on delete cascade not null primary key,
   role text check (role in ('player', 'scout', 'school_admin', 'admin')) not null default 'player',
   updated_at timestamp with time zone,
-  email text,
-  constraint profiles_pkey primary key (id)
+  email text
 );
 
 -- Enable RLS
