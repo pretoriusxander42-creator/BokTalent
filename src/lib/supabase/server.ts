@@ -3,7 +3,6 @@ import { cookies } from 'next/headers'
 import { serverEnv } from '../env'
 
 // Allow disabling Supabase client (useful for E2E/dev when a live Supabase isn't available)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let _supabase: any = undefined
 
 if (process.env.DISABLE_SUPABASE === '1') {
@@ -42,7 +41,6 @@ if (process.env.DISABLE_SUPABASE === '1') {
 export let supabaseServer = _supabase
 
 // Allow tests to inject a fake supabase server client
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function setSupabaseServerForTests(client: any) {
   supabaseServer = client
 }
